@@ -23,6 +23,7 @@ namespace ComicBookGalleryModel
                 context.SaveChanges();
 
                 List<ComicBook> comicBooks = context.ComicBooks.ToList();
+
                 foreach (ComicBook c in comicBooks)
                 {
                     Console.WriteLine(c.SeriesTitle);
