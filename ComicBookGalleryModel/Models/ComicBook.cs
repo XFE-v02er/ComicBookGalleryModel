@@ -12,7 +12,7 @@ namespace ComicBookGalleryModel.Models
 
         public ComicBook()
         {
-            Artists = new List<Artist>();
+            Artists = new List<ComicBookArtist>();
         }
 
         // ID, ComicBookId, ComicBookID -- All formats that will associate the property w/ primary key
@@ -24,9 +24,18 @@ namespace ComicBookGalleryModel.Models
         public decimal? AverageRating { get; set; }
 
         public Series Series { get; set; }
-        public ICollection<Artist> Artists { get; set; }
+        public ICollection<ComicBookArtist> Artists { get; set; }
 
         public string DisplayText => $"{Series?.Title} #{IssueNumber}";
+
+        public void AddArtists(Artist artist, Role role)
+        {
+            Artists.Add(new ComicBookArtist()
+            {
+                Artist = artist,
+                Role = role
+            });
+        }
     }
     
 }
